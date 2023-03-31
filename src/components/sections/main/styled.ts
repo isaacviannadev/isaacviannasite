@@ -20,4 +20,14 @@ export const Content = styled.div`
   max-width: 90rem;
   padding: 8rem 2rem;
   gap: 4rem;
+
+  @media (max-width: 768px) {
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 3.2rem;
+    }
+  }
 `;

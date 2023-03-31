@@ -20,4 +20,8 @@ export const SocialFooter = styled.nav`
   display: flex;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

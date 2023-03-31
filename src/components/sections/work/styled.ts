@@ -19,6 +19,10 @@ export const WorkItemsSC = styled.div`
   p {
     font-size: 1.2rem;
   }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const WorkContent = styled(Content)`

@@ -16,6 +16,12 @@ export const MailWrapper = styled.a`
   flex-direction: row;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const IconWrapper = styled.div`
