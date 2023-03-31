@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #151515;
     color: #AEAEAE; 
 
-    background-image: url('/src/assets/bg.svg');
+    background-image: url('/bg.svg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
