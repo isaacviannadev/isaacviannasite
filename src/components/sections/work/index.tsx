@@ -22,7 +22,7 @@ const services = [
     icon: <Palette size={54} weight="thin" />,
   },
   {
-    title: "Consulting",
+    title: "Web & Mobile App ",
     description:
       "Anywhere and on any device, your solution within everyone's reach",
     icon: <Devices size={54} weight="thin" />,
