@@ -5,10 +5,13 @@ import Footer from "./components/sections/footer";
 import Header from "./components/sections/header";
 import MainSection from "./components/sections/main";
 import Work from "./components/sections/work";
+import { useLanguage } from "./contexts/LanguageContext";
 
 function App() {
+  const { language } = useLanguage();
+
   return (
-    <>
+    <div key={language}>
       <Header />
       <Divider />
       <MainSection />
@@ -18,7 +21,7 @@ function App() {
       <Contact />
       <Divider />
       <Footer />
-    </>
+    </div>
   );
 }
 

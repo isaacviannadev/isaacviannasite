@@ -7,38 +7,36 @@ import {
 import Card from "../../UI/card";
 import { Section } from "../main/styled";
 import { WorkContent, WorkItemsSC } from "./styled";
-
-const services = [
-  {
-    title: "Development",
-    description:
-      "I can help you to create your software, from the idea to the final product.",
-    icon: <TerminalWindow size={54} weight="thin" />,
-  },
-  {
-    title: "Design & UX/UI",
-    description:
-      "Combining creativity and usability to make a smart and functional design",
-    icon: <Palette size={54} weight="thin" />,
-  },
-  {
-    title: "Web & Mobile App ",
-    description:
-      "Anywhere and on any device, your solution within everyone's reach",
-    icon: <Devices size={54} weight="thin" />,
-  },
-  {
-    title: "Agile Management",
-    description: "Agile management of your project, saving time and resources",
-    icon: <UsersThree size={54} weight="thin" />,
-  },
-];
+import { t } from "i18next";
 
 const Work = () => {
+  const services = [
+    {
+      title: t("development.title"),
+      description: t("development.description"),
+      icon: <TerminalWindow size={54} weight="thin" />,
+    },
+    {
+      title: t("design.title"),
+      description: t("design.description"),
+      icon: <Palette size={54} weight="thin" />,
+    },
+    {
+      title: t("web.title"),
+      description: t("web.description"),
+      icon: <Devices size={54} weight="thin" />,
+    },
+    {
+      title: t("agile.title"),
+      description: t("agile.description"),
+      icon: <UsersThree size={54} weight="thin" />,
+    },
+  ];
+
   return (
     <Section>
       <WorkContent>
-        <h2>It's time to make your software</h2>
+        <h2>{t("itsTimeMessage")}</h2>
 
         <WorkItemsSC>
           {services.map((service, index) => (

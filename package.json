@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.6",
+    "i18next": "^23.5.1",
+    "i18next-browser-languagedetector": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.3.0",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import { Envelope } from "@phosphor-icons/react";
 import { HeaderSC, IconWrapper, MailWrapper, Social } from "./styled";
+import LanguageSelector from "./language";
 
 const Header = () => {
   return (
@@ -12,6 +13,8 @@ const Header = () => {
       </MailWrapper>
 
       <Social>
+        <LanguageSelector />
+
         <a
           href="https://www.linkedin.com/in/isaacvianna/"
           target="_blank"

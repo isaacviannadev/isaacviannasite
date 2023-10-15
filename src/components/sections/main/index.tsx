@@ -2,6 +2,7 @@ import { GithubLogo } from "@phosphor-icons/react";
 import Profile from "../../../assets/me.png";
 import Button from "../../UI/button";
 import { Content, Section } from "./styled";
+import { t } from "i18next";
 
 const MainSection = () => {
   const clickToGithub = () => {
@@ -12,13 +13,10 @@ const MainSection = () => {
     <Section>
       <Content>
         <img src={Profile} alt="My photo bw" />
-        <p>Hi, I'm Isaac 👋</p>
-        <h1>
-          Software engineer and frontend developer, passionate about creating
-          memorable digital experiences
-        </h1>
+        <p>{t("greetings", { name: "Isaac" })} 👋</p>
+        <h1>{t("heading")}</h1>
         <Button
-          text="My Github"
+          text={t("gitBtn")}
           icon={<GithubLogo size={26} weight="thin" />}
           onClick={clickToGithub}
         />

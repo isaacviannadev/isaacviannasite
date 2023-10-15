@@ -7,6 +7,10 @@ import {
   netlinks,
   qconcursos,
   worten,
+  adentis,
+  ferragamo,
+  farfetch,
+  cartier,
 } from "../../../assets/brands";
 
 const Brands = () => {
@@ -17,18 +21,18 @@ const Brands = () => {
     crowd,
     lilly,
     netlinks,
-    worten,
-    hurb,
-    qconcursos,
-    crowd,
-    lilly,
-    netlinks,
+    adentis,
+    ferragamo,
+    farfetch,
+    cartier,
   ];
+
+  const allImages = [...images, ...images];
 
   return (
     <BrandsSC>
       <Slider>
-        {images.map((image, index) => (
+        {allImages.map((image, index) => (
           <img src={image} alt={`brand-${index}`} key={index} />
         ))}
       </Slider>

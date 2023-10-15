@@ -1,12 +1,13 @@
+import { t } from "i18next";
 import { FooterSC, SocialFooter, TextFooter } from "./styled";
 
 const Footer = () => {
   return (
     <FooterSC>
-      <TextFooter>© 2023 - All rights reserved</TextFooter>
+      <TextFooter>{t("copyright")}</TextFooter>
 
       <TextFooter>
-        Made with <TextFooter>❤️</TextFooter>
+        {t("withLove")} <TextFooter>❤️</TextFooter>
       </TextFooter>
 
       <SocialFooter>
