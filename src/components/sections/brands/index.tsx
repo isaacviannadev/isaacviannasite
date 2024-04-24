@@ -1,17 +1,17 @@
 import { BrandsSC, Slider } from "./styled";
 
 import {
+  adentis,
+  cartier,
   crowd,
+  farfetch,
+  ferragamo,
   hurb,
   lilly,
   netlinks,
   qconcursos,
   worten,
-  adentis,
-  ferragamo,
-  farfetch,
-  cartier,
-} from "../../../assets/brands";
+} from "@assets";
 
 const Brands = () => {
   const images = [

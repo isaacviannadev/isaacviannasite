@@ -37,6 +37,7 @@ const Work = () => {
     <Section>
       <WorkContent>
         <h2>{t("itsTimeMessage")}</h2>
+        <p>{t("itsTimeDescription")}</p>
 
         <WorkItemsSC>
           {services.map((service, index) => (

@@ -27,5 +27,10 @@ export const WorkItemsSC = styled.div`
 
 export const WorkContent = styled(Content)`
   max-width: 120rem;
-  gap: 10rem;
+  gap: 5rem;
+
+  p {
+    max-width: 58rem;
+    text-align: center;
+  }
 `;

@@ -7,7 +7,6 @@ import React, {
   useEffect,
 } from "react";
 import i18n from "../i18n";
-import { use } from "i18next";
 
 interface LanguageContextProps {
   language: string;
@@ -33,18 +32,12 @@ interface LanguageProviderProps {
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   children,
 }) => {
-  const [language, setLanguage] = useState<string>(i18n.language);
+  const [language, setLanguage] = useState<string>(i18n.language || "pt-BR");
 
   const changeLanguage = (newLanguage: string): void => {
     i18n.changeLanguage(newLanguage);
     setLanguage(newLanguage);
   };
-
-  useEffect(() => {
-    i18n.on("languageChanged", (lng) => {
-      console.log("languageChanged", lng);
-    });
-  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, changeLanguage }}>
