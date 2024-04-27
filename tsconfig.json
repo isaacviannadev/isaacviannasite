@@ -17,7 +17,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@isaac/*": ["src/*"],
+      "@components": ["src/components/index.ts"],
       "@assets": ["src/assets/index.ts"]
     }
   },

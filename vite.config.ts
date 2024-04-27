@@ -9,7 +9,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@isaac": "/src",
       "@assets": "/src/assets",
+      "@components": "/src/components",
     },
   },
 });
