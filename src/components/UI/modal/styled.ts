@@ -28,6 +28,14 @@ export const Content = styled.div`
   gap: 1rem;
 
   filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.5));
+
+  @media (max-width: 768px) {
+    height: calc(100dvh - 10rem);
+    inset: 0;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
 `;
 
 export const Header = styled.header`

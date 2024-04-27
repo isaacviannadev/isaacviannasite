@@ -14,6 +14,11 @@ export const Content = styled.div`
   flex-direction: row;
   gap: 3rem;
   min-height: 30rem;
+  height: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Description = styled.div`
@@ -31,12 +36,18 @@ export const Details = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   gap: 1rem;
   flex: 1;
+
+  @media (max-width: 768px) {
+    padding-bottom: 4rem;
+  }
 `;
 
 export const ImageBox = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   position: relative;
   height: 100%;
