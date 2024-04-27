@@ -38,10 +38,13 @@ export const Details = styled.div`
   align-items: center;
   height: 100%;
   gap: 1rem;
-  flex: 1;
+  flex: 1.5;
 
   @media (max-width: 768px) {
-    padding-bottom: 4rem;
+    flex: 1.2;
+  }
+  @media (max-width: 465px) {
+    flex: 1;
   }
 `;
 
@@ -52,6 +55,7 @@ export const ImageBox = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
+  min-height: 30rem;
   padding: 1rem;
   z-index: 0;
 
@@ -59,16 +63,16 @@ export const ImageBox = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    max-width: 25rem;
-    max-height: 14rem;
+    max-width: 32rem;
+    max-height: 16rem;
     border-radius: 0.6rem;
+    aspect-ratio: 16 / 9;
   }
 
   & img:nth-of-type(1) {
     z-index: 1;
-
-    top: 0;
-    left: 0;
+    top: 1rem;
+    left: 1rem;
   }
 
   & img:nth-of-type(2) {
@@ -86,13 +90,37 @@ export const ImageBox = styled.div`
 
   @media (max-width: 768px) {
     & img {
-      max-width: 35rem;
-      max-height: 17rem;
-      inset: 0;
+      max-width: 40rem;
+      max-height: 20rem;
     }
+
+    & img:nth-of-type(1) {
+      left: 50%;
+      transform: translateX(calc(-50% - 4rem));
+    }
+
     & img:nth-of-type(2) {
-      z-index: 2;
       top: 10rem;
+      left: 50%;
+      transform: translateX(calc(-50% + 4rem));
+    }
+  }
+
+  @media (max-width: 465px) {
+    & img {
+      max-width: auto;
+      max-height: 17rem;
+      aspect-ratio: 16 / 9;
+    }
+
+    & img:nth-of-type(1) {
+      left: 50%;
+      transform: translateX(calc(-50%));
+    }
+
+    & img:nth-of-type(2) {
+      left: 50%;
+      transform: translateX(calc(-50%));
     }
   }
 `;
