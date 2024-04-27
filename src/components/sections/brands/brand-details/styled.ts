@@ -83,4 +83,16 @@ export const ImageBox = styled.div`
     z-index: 3;
     box-shadow: 0 0 1rem 0.2rem rgba(0, 0, 0, 0.4);
   }
+
+  @media (max-width: 768px) {
+    & img {
+      max-width: 35rem;
+      max-height: 17rem;
+      inset: 0;
+    }
+    & img:nth-of-type(2) {
+      z-index: 2;
+      top: 10rem;
+    }
+  }
 `;
