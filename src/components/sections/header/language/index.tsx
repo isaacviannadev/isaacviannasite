@@ -1,8 +1,8 @@
-import { en, es, pt } from "../../../../assets/flags";
-import { LangButton, MenuLang, PopoverLang } from "./styled";
+import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { en, es, pt } from "../../../../assets/flags";
 import { useLanguage } from "../../../../contexts/LanguageContext";
-import { t, use } from "i18next";
+import { LangButton, MenuLang, PopoverLang } from "./styled";
 
 const LanguageSelector = () => {
   const { language: defaultLang, changeLanguage } = useLanguage();
@@ -34,27 +34,25 @@ const LanguageSelector = () => {
 
   const getLanguage = (code: string) => {
     const foundLang = languages.find((lang) => lang.code === code);
-
-    if (foundLang) {
-      return foundLang;
-    }
-
-    return languages[0];
+    return foundLang || languages[1]; // Retorna português como padrão
   };
 
   useEffect(() => {
-    const handleOutsideClick = (e: any) => {
-      if (!e.target.closest(".language-selector")) {
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".language-selector")) {
         setIsOpen(false);
       }
     };
 
     window.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-    };
+    return () => window.removeEventListener("click", handleOutsideClick);
   }, []);
+
+  const handleLanguageChange = (code: string) => {
+    changeLanguage(code);
+    setIsOpen(false);
+  };
 
   return (
     <MenuLang className="language-selector">
@@ -62,22 +60,30 @@ const LanguageSelector = () => {
         <img
           src={getLanguage(defaultLang).flag}
           alt={getLanguage(defaultLang).name}
+          width={24}
+          height={24}
         />
       </LangButton>
       {isOpen && (
         <PopoverLang>
-          {languages.map((language, index) => {
+          {languages.map((language) => {
             if (language.code !== defaultLang) {
               return (
                 <LangButton
-                  key={index}
-                  onClick={() => changeLanguage(language.code)}
+                  key={language.code}
+                  onClick={() => handleLanguageChange(language.code)}
                 >
-                  <img src={language.flag} alt={language.name} />
+                  <img
+                    src={language.flag}
+                    alt={language.name}
+                    width={24}
+                    height={24}
+                  />
                   <span>{t(labels[language.code as keyof typeof labels])}</span>
                 </LangButton>
               );
             }
+            return null;
           })}
         </PopoverLang>
       )}
