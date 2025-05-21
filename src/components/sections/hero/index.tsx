@@ -10,7 +10,7 @@ import {
 } from "react-scroll-motion";
 
 import MainSection from "../main";
-import { HeroContainer, NameText } from "./styled";
+import { HeroContainer, NameText, NextSection } from "./styled";
 
 export const Hero = () => {
   return (
@@ -18,7 +18,7 @@ export const Hero = () => {
       <ScrollPage>
         <Animator animation={batch(Sticky())}>
           <HeroContainer>
-            <Animator animation={batch(Zoom(70, 1))}>
+            <Animator animation={batch(Zoom(170, 1))}>
               <NameText>
                 <span>Developer</span>
                 Isaac Vianna
@@ -30,7 +30,9 @@ export const Hero = () => {
 
       <ScrollPage>
         <Animator animation={batch(Sticky(), Fade(), MoveOut(0, -1000))}>
-          <MainSection />
+          <NextSection>
+            <MainSection />
+          </NextSection>
         </Animator>
       </ScrollPage>
     </ScrollContainer>

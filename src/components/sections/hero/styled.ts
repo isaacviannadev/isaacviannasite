@@ -8,7 +8,7 @@ export const HeroContainer = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: white;
+  background: black;
   z-index: 1;
 `;
 
@@ -20,7 +20,7 @@ export const NameText = styled.h1`
   letter-spacing: 0.5rem;
   margin: 0;
   color: transparent;
-  background: black;
+  background: white;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
