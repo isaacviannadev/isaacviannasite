@@ -2,28 +2,35 @@ import {
   Animator,
   batch,
   Fade,
-  Move,
+  MoveOut,
   ScrollContainer,
   ScrollPage,
   Sticky,
   Zoom,
 } from "react-scroll-motion";
 
-import { HeroContainer, NameText, NextSection } from "./styled";
+import MainSection from "../main";
+import { HeroContainer, NameText } from "./styled";
 
 export const Hero = () => {
   return (
     <ScrollContainer>
       <ScrollPage>
-        <Animator animation={batch(Sticky(), Fade())}>
+        <Animator animation={batch(Sticky())}>
           <HeroContainer>
-            <NextSection />
-            <Animator
-              animation={batch(Zoom(30, 1), Move(0, 0, 0, 0), Fade(0, 1))}
-            >
-              <NameText>Isaac Vianna</NameText>
+            <Animator animation={batch(Zoom(70, 1))}>
+              <NameText>
+                <span>Developer</span>
+                Isaac Vianna
+              </NameText>
             </Animator>
           </HeroContainer>
+        </Animator>
+      </ScrollPage>
+
+      <ScrollPage>
+        <Animator animation={batch(Sticky(), Fade(), MoveOut(0, -1000))}>
+          <MainSection />
         </Animator>
       </ScrollPage>
     </ScrollContainer>

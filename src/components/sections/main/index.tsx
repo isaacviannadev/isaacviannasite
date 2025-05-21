@@ -1,8 +1,8 @@
 import { GithubLogo } from "@phosphor-icons/react";
+import { t } from "i18next";
 import Profile from "../../../assets/me.png";
 import Button from "../../UI/button";
 import { Content, Section } from "./styled";
-import { t } from "i18next";
 
 const MainSection = () => {
   const clickToGithub = () => {
