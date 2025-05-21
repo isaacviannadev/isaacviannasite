@@ -13,21 +13,6 @@ export const HeroContainer = styled.div`
   background: black;
 `;
 
-export const RevealContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  clip-path: circle(0% at 50% 50%);
-  transition: clip-path 1.5s ease-in-out;
-
-  &:hover {
-    clip-path: circle(150% at 50% 50%);
-  }
-`;
-
 export const NameText = styled.h1`
   width: 100%;
   font-size: 8rem;

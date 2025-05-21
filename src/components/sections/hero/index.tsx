@@ -9,12 +9,7 @@ import {
   Zoom,
 } from "react-scroll-motion";
 
-import {
-  HeroContainer,
-  NameText,
-  NextSection,
-  RevealContainer,
-} from "./styled";
+import { HeroContainer, NameText, NextSection } from "./styled";
 
 export const Hero = () => {
   return (
@@ -22,11 +17,9 @@ export const Hero = () => {
       <ScrollPage>
         <Animator animation={batch(Sticky(), Fade())}>
           <HeroContainer>
-            <RevealContainer>
-              <NextSection />
-            </RevealContainer>
+            <NextSection />
             <Animator
-              animation={batch(Zoom(20, 1), Move(0, 0, 0, 0), Fade(0, 1))}
+              animation={batch(Zoom(30, 1), Move(0, 0, 0, 0), Fade(0, 1))}
             >
               <NameText>Isaac Vianna</NameText>
             </Animator>
