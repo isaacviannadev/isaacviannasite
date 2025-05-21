@@ -8,8 +8,6 @@ export const HeroContainer = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: black;
-  z-index: 1;
 `;
 
 export const NameText = styled.h1`

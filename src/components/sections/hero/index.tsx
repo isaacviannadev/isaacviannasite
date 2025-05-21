@@ -15,7 +15,7 @@ import { HeroContainer, NameText, NextSection } from "./styled";
 export const Hero = () => {
   return (
     <ScrollContainer>
-      <ScrollPage>
+      <ScrollPage style={{ zIndex: 1 }}>
         <Animator animation={batch(Sticky())}>
           <HeroContainer>
             <Animator animation={batch(Zoom(60, 1))}>
@@ -28,7 +28,7 @@ export const Hero = () => {
         </Animator>
       </ScrollPage>
 
-      <ScrollPage>
+      <ScrollPage style={{ zIndex: 0 }}>
         <Animator animation={batch(Sticky(), Fade(), MoveOut(0, -1000))}>
           <NextSection>
             <MainSection />
