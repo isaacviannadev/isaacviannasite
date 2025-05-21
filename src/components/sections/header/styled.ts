@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const HeaderSC = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   margin: 0 auto;
