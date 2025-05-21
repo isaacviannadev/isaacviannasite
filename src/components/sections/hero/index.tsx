@@ -18,7 +18,7 @@ export const Hero = () => {
       <ScrollPage>
         <Animator animation={batch(Sticky())}>
           <HeroContainer>
-            <Animator animation={batch(Zoom(170, 1))}>
+            <Animator animation={batch(Zoom(60, 1))}>
               <NameText>
                 <span>Developer</span>
                 Isaac Vianna
