@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+*.tsbuildinfo
+.turbo
+.vercel
+
+# Yarn
+.yarn/install-state.gz
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
