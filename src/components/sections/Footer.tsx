@@ -25,7 +25,7 @@ export function Footer() {
         </a>
         <div className="f-grid">
           <div className="f-socials">
-            <a href="https://github.com/" data-cursor="↗">
+            <a href="https://github.com/isaacviannadev" data-cursor="↗">
               GitHub<span className="ln" />
             </a>
             <a
@@ -33,12 +33,6 @@ export function Footer() {
               data-cursor="↗"
             >
               LinkedIn<span className="ln" />
-            </a>
-            <a href="https://x.com/" data-cursor="↗">
-              Twitter<span className="ln" />
-            </a>
-            <a href="https://www.isaacvianna.com.br/" data-cursor="↗">
-              Read.cv<span className="ln" />
             </a>
           </div>
           <div className="mono" style={{ textAlign: "right" }}>
