@@ -1,0 +1,24 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Use the Node version pinned in .nvmrc (Next.js 16 needs Node >= 20.9)
+        - nvm install $(cat .nvmrc)
+        - nvm use $(cat .nvmrc)
+        # Yarn 4 (Berry) via Corepack
+        - corepack enable
+        - corepack prepare yarn@4.1.1 --activate
+        - yarn install --immutable
+    build:
+      commands:
+        - yarn build
+  artifacts:
+    # Static export output (next.config.mjs: output: "export")
+    baseDirectory: out
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*
