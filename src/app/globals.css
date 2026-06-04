@@ -10,8 +10,10 @@
   --color-fg: #f3efe7;
   --color-fg-dim: #8c887e;
   --color-fg-faint: #4a4842;
-  --color-accent: #e8d31f;
-  --color-accent2: #f2e25a;
+  --color-accent: #f94b52;
+  --color-accent2: #fb8a8f;
+  /* --color-accent: #e8d31f; */
+  /* --color-accent2: #f2e25a; */
 
   --font-display: var(--font-bricolage), sans-serif;
   --font-serif: var(--font-instrument), Georgia, serif;

@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 /**
  * Interactive 3D point cloud — a Fibonacci sphere of points + nearest-neighbour
  * constellation lines, own perspective projection, reactive to pointer and
- * scroll. Ported from hero3d.js (tiffany accent, no tweaks panel).
+ * scroll. Ported from hero3d.js (coral accent, no tweaks panel).
  */
 export function Hero3D() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -16,7 +16,7 @@ export function Hero3D() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const ACCENT = "232,211,31";
+    const ACCENT = "249,75,82";
 
     let W = 0;
     let H = 0;
