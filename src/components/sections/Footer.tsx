@@ -8,7 +8,7 @@ export function Footer() {
     <footer id="footer" className="panel" data-reveal>
       <div className="wrap">
         <div className="f-lead mono" data-fade>
-          (05) · {t("footer_cta")}
+          (06) · {t("footer_cta")}
         </div>
         <a
           className="f-mail"

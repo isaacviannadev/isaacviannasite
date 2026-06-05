@@ -6,7 +6,8 @@ const ITEMS: { go: string; n: string; en: string; pt: string }[] = [
   { go: "about", n: "02", en: "About", pt: "Sobre" },
   { go: "work", n: "03", en: "Work", pt: "Projetos" },
   { go: "caps", n: "04", en: "Skills", pt: "Skills" },
-  { go: "footer", n: "05", en: "Contact", pt: "Contato" },
+  { go: "div", n: "05", en: "DIV", pt: "DIV" },
+  { go: "footer", n: "06", en: "Contact", pt: "Contato" },
 ];
 
 export function Rail() {

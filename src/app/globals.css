@@ -820,6 +820,88 @@ section {
 }
 
 /* ----------------------------------------------------------- */
+/*  Consultancy / DIV                                          */
+/* ----------------------------------------------------------- */
+#div .div-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+#div .div-lead {
+  grid-column: 1 / span 4;
+}
+#div .div-logo {
+  display: block;
+  width: clamp(150px, 20vw, 280px);
+  height: auto;
+}
+#div .div-body {
+  grid-column: 6 / span 7;
+}
+#div .div-statement {
+  font-weight: 500;
+  font-size: clamp(24px, 2.8vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+#div .div-statement b {
+  font-weight: 600;
+}
+#div .div-statement em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+#div .div-copy {
+  margin-top: clamp(20px, 2.4vw, 32px);
+  max-width: 52ch;
+  color: var(--fg-dim);
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: var(--f-display);
+}
+#div .div-chips {
+  margin-top: clamp(24px, 2.6vw, 36px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#div .div-chips span {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+}
+#div .div-cta {
+  margin-top: clamp(28px, 3vw, 44px);
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  font-weight: 500;
+  font-size: clamp(20px, 2vw, 30px);
+  letter-spacing: -0.02em;
+  transition: color 0.25s ease;
+}
+#div .div-cta:hover {
+  color: var(--accent);
+}
+@media (max-width: 880px) {
+  #div .div-lead {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+  }
+  #div .div-body {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ----------------------------------------------------------- */
 /*  Footer                                                     */
 /* ----------------------------------------------------------- */
 #footer {

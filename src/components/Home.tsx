@@ -8,6 +8,7 @@ import { Manifesto } from "@/components/sections/Manifesto";
 import { About } from "@/components/sections/About";
 import { Work } from "@/components/sections/Work";
 import { Capabilities } from "@/components/sections/Capabilities";
+import { Consultancy } from "@/components/sections/Consultancy";
 import { Footer } from "@/components/sections/Footer";
 import { useReveal } from "@/hooks/useReveal";
 import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
@@ -29,6 +30,7 @@ export function Home() {
         <About />
         <Work />
         <Capabilities />
+        <Consultancy />
         <Footer />
       </div>
 
