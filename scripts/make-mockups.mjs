@@ -110,29 +110,15 @@ async function make(inPath, outName, ar, opts = {}) {
   );
 }
 
-const D = "/Users/isaacvianna/Downloads";
+const S = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "shots");
 const jobs = [
   // ---- covers (16:9, generous frame) ----
-  [`${D}/MacBook Pro 16_ - 13.png`, "zeloclub-cover.jpg", "16:9"],
-  [`${D}/image 48.png`, "ferrari-cover.jpg", "16:9"],
-  [`${D}/image 50.png`, "archimini-cover.jpg", "16:9"],
-  [`${D}/Step 1 · Login.png`, "vodafone-cover.jpg", "16:9"],
+  [`${S}/spikeme-home.png`, "spikeme-cover.jpg", "16:9"], // home hero (volt on near-black)
   // ---- work-strip cards (4:5, frame) ----
-  [`${D}/image 47.png`, "zeloclub-card.jpg", "4:5"],
-  [`${D}/image 48.png`, "ferrari-card.jpg", "4:5"],
-  ["/tmp/image_avif.png", "archimini-card.jpg", "4:5"],
-  [`${D}/Step 1 · Login.png`, "vodafone-card.jpg", "4:5"],
+  [`${S}/spikeme-app.png`, "spikeme-card.jpg", "4:5"], // wizard: stack analyzed
   // ---- gallery shots (16:10, tight — screenshot dominates, no crop) ----
-  ["/tmp/new-zeloclub.png", "zeloclub-1.jpg", "16:10", { tight: true }], // marketplace: Lista de profissionais
-  [
-    `${D}/02 _ Semana por cuidador _ padr_es e folgas.png`,
-    "zeloclub-2.jpg",
-    "16:10",
-    { tight: true },
-  ], // Care: escala
-  ["/tmp/new-ferrari.png", "ferrari-1.jpg", "16:10", { tight: true }], // design system in Storybook
-  [`${D}/image 51.png`, "archimini-1.jpg", "16:10", { tight: true }], // product page
-  ["/tmp/new-vodafone.png", "vodafone-1.jpg", "16:10", { tight: true }], // TARS login flow board
+  [`${S}/spikeme-exemplo.png`, "spikeme-1.jpg", "16:10", { tight: true }], // public spike document
+  [`${S}/spikeme-exemplo-tabela.png`, "spikeme-2.jpg", "16:10", { tight: true }], // comparison table + recommendation
 ];
 
 for (const [inPath, outName, ar, opts] of jobs) {
