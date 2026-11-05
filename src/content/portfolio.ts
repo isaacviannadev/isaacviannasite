@@ -16,9 +16,11 @@ export interface Project {
   year: string;
   tags: string[];
   summary: Bilingual;
+  contribution: Bilingual;
   role: Bilingual;
   overview: Bilingual;
   did: BilingualList;
+  decisions: BilingualList;
   stack: string[];
   /** Persistence/image keys (kept for parity with the design). */
   slots: [string, string, string];
@@ -32,14 +34,15 @@ export const STRINGS: Record<Lang, Record<string, string>> = {
     nav_work: "Work",
     nav_about: "About",
     nav_contact: "Contact",
-    avail: "Available · Q3 2026",
-    role: "Software Engineer · Creative Developer",
-    work_label: "Selected Work · 2018 / 2026",
+    avail: "Brazil & Portugal",
+    role: "Senior Frontend Engineer",
+    work_label: "Selected projects",
     view: "View",
-    back: "Back to index",
+    back: "Back to projects",
     next_project: "Next project",
     overview: "Overview",
-    contribution: "What I did",
+    contribution: "My contribution",
+    decisions: "Technical decisions",
     stack: "Stack",
     year: "Year",
     role_label: "Role",
@@ -52,14 +55,15 @@ export const STRINGS: Record<Lang, Record<string, string>> = {
     nav_work: "Projetos",
     nav_about: "Sobre",
     nav_contact: "Contato",
-    avail: "Disponível · 3º tri 2026",
-    role: "Engenheiro de Software · Desenvolvedor Criativo",
-    work_label: "Trabalhos Selecionados · 2018 / 2026",
+    avail: "Brasil & Portugal",
+    role: "Engenheiro de Frontend Sênior",
+    work_label: "Projetos selecionados",
     view: "Ver",
-    back: "Voltar ao índice",
+    back: "Voltar aos projetos",
     next_project: "Próximo projeto",
     overview: "Visão geral",
-    contribution: "O que eu fiz",
+    contribution: "Minha contribuição",
+    decisions: "Decisões técnicas",
     stack: "Stack",
     year: "Ano",
     role_label: "Função",
@@ -100,6 +104,10 @@ export const PROJECTS: Project[] = [
       en: "Telecom digital products",
       pt: "Produtos digitais de telecom",
     },
+    contribution: {
+      en: "I led TARS from stakeholder discovery and Figma prototypes to frontend architecture and a documented component library.",
+      pt: "Conduzi o TARS do alinhamento com stakeholders e protótipos no Figma à arquitetura frontend e biblioteca de componentes documentada.",
+    },
     role: { en: "Frontend Engineer", pt: "Engenheiro de Frontend" },
     overview: {
       en: "Frontend engineering for Vodafone's internal digital products, with TARS, a test automation and reporting system, as the main focus. I led the work from planning to delivery: aligning with stakeholders early to understand pain points and improvement opportunities, prototyping the new application in Figma, designing the architecture, shipping a documented component library and building the frontend of the new version. I worked closely with the backend team to integrate the new API and refine the points that needed more performance and security, always aligned with an excellent UX and Vodafone's global brand strategy.",
@@ -127,6 +135,18 @@ export const PROJECTS: Project[] = [
         "Alinhei o trabalho à estratégia global da marca Vodafone com forte foco em UX",
       ],
     },
+    decisions: {
+      en: [
+        "Built reusable components with Next.js, React and Tailwind v4, with documentation for the component library.",
+        "Applied SOLID and clean architecture while migrating client components to Server Components.",
+        "Integrated the new API in collaboration with the backend team, refining performance and security together.",
+      ],
+      pt: [
+        "Construí componentes reutilizáveis com Next.js, React e Tailwind v4, com documentação para a biblioteca.",
+        "Apliquei SOLID e clean architecture na migração de componentes client para Server Components.",
+        "Integrei a nova API em colaboração com o time de backend, refinando performance e segurança em conjunto.",
+      ],
+    },
     stack: ["Next.js", "React", "Tailwind v4", "TypeScript"],
     slots: ["vodafone-1", "vodafone-2", "vodafone-3"],
     images: {
@@ -144,6 +164,10 @@ export const PROJECTS: Project[] = [
     summary: {
       en: "Brand design system & motion",
       pt: "Design system & motion da marca",
+    },
+    contribution: {
+      en: "I led the design system's development and refactoring with Ferrari Italia, building components in Lit and React.",
+      pt: "Liderei o desenvolvimento e a refatoração do design system com a Ferrari Italia, construindo componentes em Lit e React.",
     },
     role: {
       en: "Lead Frontend Engineer · Design System",
@@ -171,6 +195,18 @@ export const PROJECTS: Project[] = [
         "Mantive um padrão rigoroso de performance e fidelidade pixel-perfect sob as exigências da marca Ferrari",
       ],
     },
+    decisions: {
+      en: [
+        "Built a cross-framework component library using Lit and React.",
+        "Documented the component library end to end in Storybook.",
+        "Used GSAP for choreographed transitions and Three.js for real-time scenes, with sound synchronized to animation.",
+      ],
+      pt: [
+        "Construí uma biblioteca de componentes cross-framework com Lit e React.",
+        "Documentei a biblioteca de componentes de ponta a ponta no Storybook.",
+        "Usei GSAP nas transições coreografadas e Three.js nas cenas em tempo real, com som sincronizado à animação.",
+      ],
+    },
     stack: ["Lit", "React", "GSAP", "Three.js", "Storybook"],
     slots: ["ferrari-1", "ferrari-2", "ferrari-3"],
     images: {
@@ -188,6 +224,10 @@ export const PROJECTS: Project[] = [
     summary: {
       en: "AI-written spike documents",
       pt: "Documentos de spike com IA",
+    },
+    contribution: {
+      en: "I conceived and built the entire SaaS, from UX and streaming frontend to backend, billing and developer tools.",
+      pt: "Idealizei e construí o SaaS completo, da UX e frontend com streaming ao backend, pagamentos e ferramentas para desenvolvedores.",
     },
     role: { en: "Founder & Full-stack Developer", pt: "Fundador & Desenvolvedor Full-stack" },
     overview: {
@@ -214,6 +254,18 @@ export const PROJECTS: Project[] = [
         "Distribuí o SpikeMe como servidor MCP e CLI para gerar spikes dentro de fluxos de agentes",
       ],
     },
+    decisions: {
+      en: [
+        "Analyzed npm, Python and Go manifests locally in the browser, sending only a derived stack summary to the backend.",
+        "Kept the AI key in Supabase Edge Functions, validating JWTs and claiming quota atomically before spending tokens, with refunds on failure.",
+        "Modeled plans and quotas in Postgres with RLS, synchronized with Stripe Checkout and Customer Portal through webhooks.",
+      ],
+      pt: [
+        "Analisei manifestos npm, Python e Go localmente no navegador, enviando ao backend apenas um resumo derivado da stack.",
+        "Mantive a chave da IA em Edge Functions da Supabase, validando JWTs e reservando cota de forma atômica antes de gastar tokens, com devolução em falha.",
+        "Modelei planos e cotas no Postgres com RLS, sincronizados com Stripe Checkout e Customer Portal por webhooks.",
+      ],
+    },
     stack: ["Next.js 15", "Supabase", "Stripe", "Claude API", "MCP"],
     slots: ["spikeme-1", "spikeme-2", "spikeme-3"],
     images: {
@@ -231,6 +283,10 @@ export const PROJECTS: Project[] = [
     summary: {
       en: "Care marketplace & B2B suite",
       pt: "Marketplace de cuidado & suíte B2B",
+    },
+    contribution: {
+      en: "I shaped the product, built the caregiver marketplace frontend and contributed to role-based apps for care teams.",
+      pt: "Defini o produto, construí o frontend do marketplace de cuidadores e contribuí nos apps por perfil para equipes de cuidado.",
     },
     role: { en: "Founder · Product & Frontend", pt: "Idealizador · Produto & Frontend" },
     overview: {
@@ -253,6 +309,18 @@ export const PROJECTS: Project[] = [
         "Usei TanStack Query para server state e React Hook Form + Zod em todos os formulários",
         "Adicionei product analytics (PostHog) e proteção contra bots (Turnstile) nos funis críticos",
         "Contribuí no Zeloclub Care: apps por papel para clínica, cuidador (PWA offline-first) e família num monorepo Turborepo",
+      ],
+    },
+    decisions: {
+      en: [
+        "Generated a fully typed API client with Orval from the .NET backend's OpenAPI spec.",
+        "Used TanStack Query for server state and React Hook Form with Zod for forms.",
+        "The care suite uses role-based apps in a Turborepo monorepo, including an offline-first caregiver PWA.",
+      ],
+      pt: [
+        "Gerei um client de API totalmente tipado com Orval a partir do OpenAPI do backend .NET.",
+        "Usei TanStack Query para o estado do servidor e React Hook Form com Zod para os formulários.",
+        "A suíte de cuidado usa apps por perfil num monorepo Turborepo, incluindo uma PWA offline-first para cuidadores.",
       ],
     },
     stack: ["Next.js", "TanStack Query", "TypeScript", "Orval · REST"],
