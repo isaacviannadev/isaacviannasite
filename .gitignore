@@ -35,3 +35,7 @@ next-env.d.ts
 *.sln
 *.sw?
 .env*
+
+# Browser verification
+/test-results/
+/playwright-report/
