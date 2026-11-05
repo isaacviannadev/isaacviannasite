@@ -15,7 +15,10 @@ export function Hero3D() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    let reduce = motion.matches;
+    let visible = true;
+    let animation = 0;
     const ACCENT = "249,75,82";
 
     let W = 0;
@@ -80,34 +83,36 @@ export function Hero3D() {
     let tmx = 0;
     let tmy = 0;
     const onPointer = (e: PointerEvent) => {
+      if (reduce) return;
       tmx = (e.clientX / window.innerWidth - 0.5) * 2;
       tmy = (e.clientY / window.innerHeight - 0.5) * 2;
     };
     let scrollK = 0;
     const onScroll = () => {
+      if (reduce) return;
       scrollK = (window.scrollY || 0) / window.innerHeight;
+      start();
     };
     window.addEventListener("pointermove", onPointer, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });
 
     resize();
-    window.addEventListener("resize", resize);
+    const onResize = () => { resize(); start(); };
+    window.addEventListener("resize", onResize);
 
     let ang = 0;
     let running = true;
     const proj = new Array(N);
 
     const frame = () => {
-      if (!running) return;
+      animation = 0;
+      if (!running || !visible || document.hidden) return;
       ang += reduce ? 0 : 0.0016;
       mx += (tmx - mx) * 0.05;
       my += (tmy - my) * 0.05;
 
       ctx.clearRect(0, 0, W, H);
-      if (scrollK > 1.4) {
-        requestAnimationFrame(frame);
-        return;
-      }
+      if (!reduce && scrollK > 1.4) return;
 
       const rotY = ang + mx * 0.6;
       const rotX = -0.25 + my * 0.5 + scrollK * 0.4;
@@ -165,17 +170,51 @@ export function Hero3D() {
         ctx.fill();
       }
 
-      requestAnimationFrame(frame);
+      if (!reduce) animation = requestAnimationFrame(frame);
     };
-    requestAnimationFrame(frame);
+    const start = () => {
+      if (!animation && running && visible && !document.hidden) {
+        animation = requestAnimationFrame(frame);
+      }
+    };
+    const onMotion = () => {
+      reduce = motion.matches;
+      mx = my = tmx = tmy = 0;
+      scrollK = reduce ? 0 : (window.scrollY || 0) / window.innerHeight;
+      cancelAnimationFrame(animation);
+      animation = 0;
+      start();
+    };
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animation);
+        animation = 0;
+      } else start();
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) start();
+      else {
+        cancelAnimationFrame(animation);
+        animation = 0;
+      }
+    });
+    observer.observe(canvas);
+    motion.addEventListener("change", onMotion);
+    document.addEventListener("visibilitychange", onVisibility);
+    start();
 
     return () => {
       running = false;
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", onResize);
+      motion.removeEventListener("change", onMotion);
+      document.removeEventListener("visibilitychange", onVisibility);
+      observer.disconnect();
+      cancelAnimationFrame(animation);
     };
   }, []);
 
-  return <canvas id="hero-canvas" ref={canvasRef} />;
+  return <canvas id="hero-canvas" ref={canvasRef} aria-hidden="true" />;
 }

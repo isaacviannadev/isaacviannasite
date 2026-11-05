@@ -3,11 +3,10 @@ export function Consultancy() {
     <section id="div" className="panel" data-reveal>
       <div className="wrap">
         <div className="sec-head">
-          <span className="mono idx">(05)</span>
-          <span className="mono">
+          <h2>
             <span data-lang="en">Consultancy</span>
             <span data-lang="pt">Consultoria</span>
-          </span>
+          </h2>
         </div>
         <div className="div-grid">
           <div className="div-lead">

@@ -8,7 +8,7 @@ export function Footer() {
     <footer id="footer" className="panel" data-reveal>
       <div className="wrap">
         <div className="f-lead mono" data-fade>
-          (06) · {t("footer_cta")}
+          {t("footer_cta")}
         </div>
         <a
           className="f-mail"
@@ -23,6 +23,7 @@ export function Footer() {
             Diga<em>&nbsp;olá</em> →
           </span>
         </a>
+        <a className="f-address" href="mailto:hello@isaacvianna.com.br">hello@isaacvianna.com.br</a>
         <div className="f-grid">
           <div className="f-socials">
             <a href="https://github.com/isaacviannadev" data-cursor="↗">
@@ -44,8 +45,8 @@ export function Footer() {
         <div className="f-bottom mono">
           <span>© 2026 Isaac Vianna</span>
           <span>
-            <span data-lang="en">Reinvented portfolio · built with motion</span>
-            <span data-lang="pt">Portfólio reinventado · feito com motion</span>
+            <span data-lang="en">Frontend engineering & digital products</span>
+            <span data-lang="pt">Engenharia de frontend e produtos digitais</span>
           </span>
         </div>
       </div>

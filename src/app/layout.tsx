@@ -26,11 +26,20 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Isaac Vianna · Software Engineer & Creative Developer",
+  metadataBase: new URL("https://www.isaacvianna.com.br"),
+  title: "Isaac Vianna · Senior Frontend Engineer",
   description:
-    "Isaac Vianna. Software engineer & creative developer building memorable digital experiences.",
+    "Frontend engineering, design systems and digital products. Explore Isaac Vianna’s work with React, Next.js and TypeScript across Brazil and Portugal.",
   authors: [{ name: "Isaac Vianna" }],
-  icons: { icon: "/fav.svg" },
+  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon-64.png", sizes: "64x64", type: "image/png" }], apple: "/apple-touch-icon.png" },
+  openGraph: {
+    type: "website",
+    siteName: "Isaac Vianna",
+    title: "Isaac Vianna · Senior Frontend Engineer",
+    description: "Frontend engineering, design systems and digital products.",
+    images: [{ url: "/social-preview.jpg", width: 1200, height: 630, alt: "Isaac Vianna · Frontend Engineer" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/social-preview.jpg"] },
 };
 
 export const viewport: Viewport = {

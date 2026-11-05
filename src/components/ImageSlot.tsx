@@ -37,19 +37,18 @@ interface ImageSlotProps {
   alt?: string;
   className?: string;
   style?: CSSProperties;
+  loading?: "lazy" | "eager";
 }
 
 /**
- * Image placeholder. Renders the supplied image when `src` is set, otherwise
- * a captioned empty state. Project screenshots aren't in the bundle yet, so
- * those slots show the placeholder until real assets are dropped in.
+ * A fixed-ratio project preview; gallery details load only when needed.
  */
-export function ImageSlot({ cap, src, alt, className, style }: ImageSlotProps) {
+export function ImageSlot({ cap, src, alt, className, style, loading = "lazy" }: ImageSlotProps) {
   return (
     <div className={`slot${className ? ` ${className}` : ""}`} style={style}>
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className="slot-fill" src={src} alt={alt ?? cap} />
+        <img className="slot-fill" src={src} alt={alt ?? cap} loading={loading} decoding="async" />
       ) : (
         <SlotEmpty cap={cap} />
       )}
