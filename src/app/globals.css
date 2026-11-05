@@ -1036,6 +1036,7 @@ body.hmode #caps .cap-row p {
 @media (min-width: 901px) and (max-height: 759px) {
   body.hmode .panel,
   body.hmode #hero,
+  body.hmode #work,
   body.hmode #about,
   body.hmode #caps,
   body.hmode #div,
