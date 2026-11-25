@@ -2,34 +2,36 @@
 
 import { useEffect } from "react";
 
-/** Magnetic hover for [data-magnetic] elements. Ported from site.js. */
+/** Optional pointer response, disabled for touch and reduced-motion users. */
 export function useMagnetic() {
   useEffect(() => {
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || matchMedia("(pointer: coarse)").matches) return;
-
-    const els = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-magnetic]")
-    );
-    const cleanups = els.map((el) => {
-      const strength = parseFloat(el.dataset.magnetic || "0.4");
-      const onMove = (e: PointerEvent) => {
-        const r = el.getBoundingClientRect();
-        const dx = e.clientX - (r.left + r.width / 2);
-        const dy = e.clientY - (r.top + r.height / 2);
-        el.style.transform = `translate(${dx * strength}px,${dy * strength}px)`;
+    const query = matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-magnetic]"));
+    const reset = () => elements.forEach((element) => { element.style.transform = ""; });
+    const cleanups = elements.map((element) => {
+      const strength = parseFloat(element.dataset.magnetic || "0.4");
+      const onMove = (event: PointerEvent) => {
+        if (!query.matches || event.pointerType === "touch") return;
+        const rect = element.getBoundingClientRect();
+        const dx = event.clientX - (rect.left + rect.width / 2);
+        const dy = event.clientY - (rect.top + rect.height / 2);
+        element.style.transform = `translate(${dx * strength}px,${dy * strength}px)`;
       };
-      const onLeave = () => {
-        el.style.transform = "";
-      };
-      el.addEventListener("pointermove", onMove);
-      el.addEventListener("pointerleave", onLeave);
+      const onLeave = () => { element.style.transform = ""; };
+      element.addEventListener("pointermove", onMove);
+      element.addEventListener("pointerleave", onLeave);
+      element.addEventListener("blur", onLeave);
       return () => {
-        el.removeEventListener("pointermove", onMove);
-        el.removeEventListener("pointerleave", onLeave);
+        element.removeEventListener("pointermove", onMove);
+        element.removeEventListener("pointerleave", onLeave);
+        element.removeEventListener("blur", onLeave);
+        element.style.transform = "";
       };
     });
-
-    return () => cleanups.forEach((fn) => fn());
+    query.addEventListener("change", reset);
+    return () => {
+      query.removeEventListener("change", reset);
+      cleanups.forEach((cleanup) => cleanup());
+    };
   }, []);
 }

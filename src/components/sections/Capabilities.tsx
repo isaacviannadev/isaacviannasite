@@ -3,11 +3,10 @@ export function Capabilities() {
     <section id="caps" className="panel" data-reveal>
       <div className="wrap">
         <div className="sec-head">
-          <span className="mono idx">(04)</span>
-          <span className="mono">
+          <h2>
             <span data-lang="en">Capabilities</span>
             <span data-lang="pt">Capacidades</span>
-          </span>
+          </h2>
         </div>
         <div className="cap-grid">
           <div className="cap-lead">
@@ -84,12 +83,10 @@ export function Capabilities() {
               </div>
               <p>
                 <span data-lang="en">
-                  Real-time graphics, shaders, and generative systems that run
-                  smooth at 60fps.
+                  Real-time graphics, shaders and generative systems for interactive experiences.
                 </span>
                 <span data-lang="pt">
-                  Gráficos em tempo real, shaders e sistemas generativos rodando
-                  suaves a 60fps.
+                  Gráficos em tempo real, shaders e sistemas generativos para experiências interativas.
                 </span>
               </p>
             </div>

@@ -1,0 +1,39 @@
+name: Portfolio checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Use the project Node version
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+      - name: Enable Yarn
+        run: corepack enable
+      - name: Install locked dependencies
+        run: corepack yarn install --immutable
+      - name: Lint
+        run: corepack yarn lint
+      - name: Check TypeScript
+        run: corepack yarn typecheck
+      - name: Build the static site
+        run: corepack yarn build
+      - name: Install Chromium for browser checks
+        run: corepack yarn exec playwright install --with-deps chromium
+      - name: Check the exported site in Chromium
+        run: corepack yarn test:e2e

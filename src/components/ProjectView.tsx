@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function ProjectView({ project: p, next, index, total }: Props) {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   useEffect(() => {
     document.body.classList.add("proj-page");
@@ -29,7 +29,8 @@ export function ProjectView({ project: p, next, index, total }: Props) {
 
   return (
     <>
-      <nav id="pj-nav">
+      <a className="skip-link" href="#pj-root">{lang === "pt" ? "Pular para o case" : "Skip to case study"}</a>
+      <nav id="pj-nav" aria-label={lang === "pt" ? "Navegação do projeto" : "Project navigation"}>
         <Link className="back" href="/#work" data-cursor="←">
           <span className="ar">←</span>
           {t("back")}
@@ -40,7 +41,7 @@ export function ProjectView({ project: p, next, index, total }: Props) {
         <LangToggle />
       </nav>
 
-      <main id="pj-root" className="wrap">
+      <main id="pj-root" className="wrap" tabIndex={-1}>
         <section className="pj-hero" data-reveal>
           <div className="pj-meta-top">
             <span className="mono">{t("work_label")}</span>
@@ -53,10 +54,11 @@ export function ProjectView({ project: p, next, index, total }: Props) {
             <span data-lang="en">{p.summary.en}</span>
             <span data-lang="pt">{p.summary.pt}</span>
           </div>
+          <p className="pj-contribution" data-fade>{p.contribution[lang]}</p>
         </section>
 
         <section className="pj-cover" data-reveal>
-          <ImageSlot cap={`${p.title} · cover`} src={p.images?.cover} />
+          <ImageSlot cap={`${p.title} · ${p.summary[lang]}`} src={p.images?.cover} loading="eager" />
         </section>
 
         <section className="pj-info" data-reveal>
@@ -66,6 +68,10 @@ export function ProjectView({ project: p, next, index, total }: Props) {
               <span data-lang="en">{p.overview.en}</span>
               <span data-lang="pt">{p.overview.pt}</span>
             </p>
+            <div className="pj-decisions">
+              <h2>{t("decisions")}</h2>
+              <ul>{p.decisions[lang].map((decision) => <li key={decision}>{decision}</li>)}</ul>
+            </div>
           </div>
           <div className="pj-side">
             <div className="pj-block" data-fade>
@@ -80,7 +86,7 @@ export function ProjectView({ project: p, next, index, total }: Props) {
               <div className="one">{p.year}</div>
             </div>
             <div className="pj-block" data-fade>
-              <div className="lbl">{t("contribution")}</div>
+              <h2 className="lbl">{t("contribution")}</h2>
               <ul data-lang="en">
                 {p.did.en.map((d, i) => (
                   <li key={i}>{d}</li>
@@ -112,19 +118,23 @@ export function ProjectView({ project: p, next, index, total }: Props) {
           return (
             <section className="pj-gallery" data-reveal>
               {items.map((src, i) => (
-                <ImageSlot key={i} cap={`${p.title} · detail`} src={src} />
+                <ImageSlot key={i} cap={`${p.title} · ${lang === "pt" ? "Detalhe da interface" : "Interface detail"} ${i + 1}`} src={src} />
               ))}
             </section>
           );
         })()}
 
         <section className="pj-next" data-reveal>
-          <div className="lbl">{t("next_project")}</div>
+          <h2 className="lbl">{t("next_project")}</h2>
           <Link href={`/project/${next.slug}`} data-cursor={t("view")}>
             <span dangerouslySetInnerHTML={{ __html: next.titleHtml }} />
             <span className="ar">→</span>
           </Link>
         </section>
+        <div className="pj-contact">
+          <Link href="/#work">{t("back")}</Link>
+          <a href="mailto:hello@isaacvianna.com.br">{lang === "pt" ? "Vamos conversar sobre seu projeto" : "Let’s talk about your project"}</a>
+        </div>
       </main>
     </>
   );

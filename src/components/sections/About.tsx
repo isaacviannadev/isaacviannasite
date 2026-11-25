@@ -8,25 +8,22 @@ export function About() {
     <section id="about" className="panel" data-reveal>
       <div className="wrap">
         <div className="sec-head">
-          <span className="mono idx">(02)</span>
-          <span className="mono">{t("nav_about")}</span>
+          <h2>{t("nav_about")}</h2>
         </div>
         <div className="about-grid">
           <div className="about-photo" data-fade>
             <div className="frame">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/isaac.png" alt="Isaac Vianna" />
+              <img src="/isaac-640.webp" srcSet="/isaac-640.webp 640w, /isaac-960.webp 960w" sizes="(max-width: 900px) 360px, 40vw" width="640" height="857" loading="lazy" decoding="async" alt="Isaac Vianna" />
             </div>
             <span className="mono ph-cap">Isaac Vianna · 2026</span>
           </div>
           <div className="about-body">
             <p className="lead" data-fade data-lang="en">
-              A software engineer &amp; creative developer who lives at the seam
-              where <em>design and engineering</em> meet.
+              Frontend engineering with a <em>product mindset.</em>
             </p>
             <p className="lead" data-fade data-lang="pt">
-              Engenheiro de software &amp; desenvolvedor criativo que vive na
-              costura onde <em>design e engenharia</em> se encontram.
+              Engenharia de frontend com <em>visão de produto.</em>
             </p>
             <p className="body" data-fade data-lang="en">
               Building for the web <b>since 2018</b>. Since <b>2022</b> I’ve
@@ -45,10 +42,10 @@ export function About() {
                 <span className="k">{t("role_label")}</span>
                 <span className="v">
                   <span data-lang="en">
-                    Software Engineer · Creative Developer
+                    Senior Frontend Engineer
                   </span>
                   <span data-lang="pt">
-                    Engenheiro de Software · Dev Criativo
+                    Engenheiro de Frontend Sênior
                   </span>
                 </span>
               </div>
@@ -68,17 +65,10 @@ export function About() {
               </div>
               <div className="fact">
                 <span className="k">
-                  <span data-lang="en">Currently</span>
-                  <span data-lang="pt">Atualmente</span>
+                  <span data-lang="en">Client projects</span>
+                  <span data-lang="pt">Projetos para clientes</span>
                 </span>
-                <span className="v">Vodafone</span>
-              </div>
-              <div className="fact">
-                <span className="k">
-                  <span data-lang="en">Previously</span>
-                  <span data-lang="pt">Antes</span>
-                </span>
-                <span className="v">Ferrari</span>
+                <span className="v">Vodafone, Ferrari</span>
               </div>
               <div className="fact">
                 <span className="k">

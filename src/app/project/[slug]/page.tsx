@@ -14,7 +14,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const p = getProject(slug);
-  return { title: p ? `${p.title} · Isaac Vianna` : "Project · Isaac Vianna" };
+  if (!p) return { title: "Project · Isaac Vianna" };
+  return {
+    title: `${p.title} · Isaac Vianna`,
+    description: p.contribution.en,
+    alternates: { canonical: `/project/${p.slug}/` },
+    openGraph: {
+      title: `${p.title} · Isaac Vianna`,
+      description: p.contribution.en,
+      url: `/project/${p.slug}/`,
+      images: [{ url: p.images?.cover ?? "/social-preview.jpg", alt: `${p.title} project preview` }],
+    },
+    twitter: { card: "summary_large_image", title: `${p.title} · Isaac Vianna`, description: p.contribution.en, images: [p.images?.cover ?? "/social-preview.jpg"] },
+  };
 }
 
 export default async function ProjectPage({
